@@ -1,5 +1,7 @@
 # 🧮 Conversion Calculator
 
+[Solution](/solutions/conversion-calculator.md) | [All Ideas](/README.md)
+
 Write a command line tool that allows the user to choose between three conversion calculators: temperature, weight, and distance. Once the user chooses a calculator prompt them for what they will be converting from (Fahrenheit/Celsius, Pounds/Kilograms, Miles/Kilometers), then prompt for the value that needs to be converted. The program should continue running until the user tells it to quit. 
 
 ## Getting Started
