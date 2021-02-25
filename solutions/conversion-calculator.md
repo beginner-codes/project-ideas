@@ -2,6 +2,8 @@
 
 [Instructions](/projects/conversion-calculator.md) | [Solution Code](/solutions/conversion-calculator.py) | [All Ideas](/README.md)
 
+Here's how we did this one! It's one way to go about it, so be sure to share your solution!
+
 ## Getting Started - Temperature Converter
 
 To start off let's get it to convert between Fahrenheit and Celsius. First we need to ask the user if they want to convert from Fahrenheit or Celsius. We'll only look for the first letter and we'll make it case insensitive.
