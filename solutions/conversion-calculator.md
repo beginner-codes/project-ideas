@@ -1,6 +1,6 @@
 # 🧮 Conversion Calculator - Solution Walk Through using Python
 
-[Instructions](/projects/conversion-calculator.md) | [Solution Code](/solutions/conversion-calculator.py) | [All Ideas](/)
+[Instructions](/projects/conversion-calculator.md) | [Solution Code](/solutions/conversion-calculator.py) | [All Ideas](/README.md)
 
 ## Getting Started - Temperature Converter
 
