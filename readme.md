@@ -27,7 +27,7 @@ We're a community of coders who believe the best way to grow is to help others l
 
 ## Math
 
-- Conversion calculator (temperature, weight, distance)
+- [Conversion calculator (temperature, weight, distance)](/projects/conversion-calculator.md) [[Solution](/solutions/conversion-calculator.md)]
 - Currency converter
 - Pythagorean theorem solver
 - Quadratic equation solver
