@@ -22,7 +22,7 @@ We're a community of coders who believe the best way to grow is to help others l
 ## Using APIs
 
 - Command line weather checker
-- Command line stock checker
+- [Command line stock price checker](/projects/stock-checker.md) [[Solution](/solutions/stock-checker.md)]
 
 ## Math
 
