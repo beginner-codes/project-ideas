@@ -16,8 +16,8 @@ The next step is to register with the service providing the API to get a token, 
 
 A lot of APIs will require you to register and get a token from them, this allows them to track/limit usage. Many services have a limited number of requests for free, then you'd have to pay for more.
 
-This token should always be kept private and not shared with anybody, as such it is bad practice to enter these directly into your code incase you accidentally share it or commit it to a version control system such as git.
-There are a few ways that this can be done such as using environment variables or storing it in a seperate text file which the program will then read. For this solution we have gone with the latter.
+This token should always be kept private and not shared with anybody, as such it is bad practice to enter these directly into your code in case you accidentally share it or commit it to a version control system such as git.
+There are a few ways that this can be done such as using environment variables or storing it in a separate text file which the program will then read. For this solution we have gone with the latter.
 
 To do this, we create a text file in the same directory as the .py file, for this solution it has simply been named `api.token`. On the first line of this file paste in the token and save the file.
 
@@ -84,9 +84,9 @@ After that is a bit of error handling. We want to check the status code of the r
 If the request is not successful, we can print responses text which will contain the error that the API returned, so we don't have to write our own system - neat! We then `return` since we don't want to continue with the rest of the function if there was an error.
 
 ### Parse the response
-Many APIs will return what is called JSON. This is a widely adopted data format for transfering data. Thankfully the `requests` package has a handy way to convert JSON to a format we can easily work with in python. In this instance, it will become a python dictionary so we can deal with it as such.
+Many APIs will return what is called JSON. This is a widely adopted data format for transferring data. Thankfully the `requests` package has a handy way to convert JSON to a format we can easily work with in python. In this instance, it will become a python dictionary so we can deal with it as such.
 
-```py
+```python
 def get_stock_data(symbol, token):
     ...
     all_stock_data = response.json()
@@ -105,4 +105,62 @@ def get_stock_data(symbol, token):
     return stock_data
 ```
 
-**All Done!!!** [Checkout the completed code!](/solutions/conversion-calculator.py)
+## Asking the user for the symbol and displaying the data
+In this section we will get the user input and use the `get_stock_data` function to get the data and then print it to display it to the user.
+
+```python
+def display_stock_data(token):
+    """Ask the user to enter a symbol and then display the stock data."""
+    symbol = input("Please enter a stock symbol: ")
+    stock_data = get_stock_data(symbol, token)
+```
+First we define a function that has the `token` as a parameter. Then we ask the user for the symbol they would like to lookup the price of. 
+
+*Luckily the API we are using for this doesn't care what case the symbol is, and if the symbol doesn't exist it will return a nice error message. Depending on the service you are using, you may need to do some input validation here.*
+
+We then call our `get_stock_data` function with the `symbol` and `token` as arguments. This will be the dictionary we created containing the `name`, `symbol` and `current_price`.
+
+```python
+def display_stock_data(token):
+    ...
+    if stock_data:
+        name = stock_data["name"]
+        symbol = stock_data["symbol"]
+        current_price = stock_data["current_price"]
+
+        print(f"{name} ({symbol}) - Current price: {current_price}")
+```
+The if statement is used to check that we actually have some data that we can display. Remember earlier that if the status code was not `200` we returned `None`? This is why, we only want to try to print the data if there is actually some data to print.
+
+## Putting it all together
+Now that we have created our functions for the various parts of the program, it's time to put it all together. We will create one final function.
+
+```python
+def main():
+    """Repeatedly asks the user to enter a stock symbol until they want to stop."""
+    token = read_api_token()
+```
+First of all we read the token using our `read_api_token` function and then it would be nice if the user could keep entering symbols without having to run the program again so we create a `while` loop. Inside of this we call our `display_stock_data` function and pass it the `token` as the argument.
+The user is then asked if they want to check the price of another stock. If they enter `y` then the loop repeats and they can get the price for another stock. `lower()` is used here so that the user can enter `Y` or `y`. 
+If anything else is entered then the loop will stop.
+
+```python
+def main():
+    ...
+    again = "y"
+    while again == "y":
+        display_stock_data(token)
+        again = input(
+            "Would you like to get the price of another stock (Y/N)? "
+        ).lower()
+
+    print("Goodbye!")
+```
+
+### Finally
+The last part is calling our `main` function. We can do this by checking the module name to see if it was run and not imported. Every module has a variable `__name__` and when it has been imported this will be the name of the module. However, when the module was passed to Python to be run (for example `python my_module.py`) it will not be the name, instead it will be `"__main__"`. Python does this to indicate that it is the *main* module. So we can use this to run our `main` function only when the python file is run, we just need to put an if at the end of the file to check if the name is `"__main__"`
+```python
+if __name__ == "__main__":
+    main()
+```
+**All Done!!!** [Checkout the completed code!](/solutions/stock-checker.py)
