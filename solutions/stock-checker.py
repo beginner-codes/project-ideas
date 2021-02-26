@@ -19,7 +19,7 @@ def read_api_token():
 
 
 def get_stock_data(symbol, token):
-    """Send a request to the API with the symbol and return the stock data we want.
+    """Send a request to the API with the symbol and token. Return the stock data we want:
     Symbol, Company Name, Current Price"""
     url = f"https://cloud.iexapis.com/stable/stock/{symbol}/quote?token={token}"
     response = requests.get(url)
