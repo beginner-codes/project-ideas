@@ -1,6 +1,6 @@
 # 📈 Stock Checker - Solution Walk Through using Python
 
-[Instructions](/projects/stock-checker.md) | [Solution Code](/solutions/stock-cker.py) | [All Ideas](/README.md)
+[Instructions](/projects/stock-checker.md) | [Solution Code](/solutions/stock-checker.py) | [All Ideas](/README.md)
 
 Here's how we did this one! It's one way to go about it, so be sure to share your solution!
 
