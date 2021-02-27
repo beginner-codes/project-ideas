@@ -19,6 +19,28 @@ def switch_player(player):
     return players[player]
 
 
+def player_turn(player, board):
+    """Ask player to their turn on the board and return the player who will play next."""
+    move = ask_player_for_location(player)
+    while not check_valid_move(move, board):
+        move = ask_player_for_location(player)
+    row, column = player_turn_to_board_location(move)
+    board[row][column] = player
+    display_board(board)
+    return board
+
+
+def ask_player_for_location(player):
+    """Ask the player where they would like to use their turn"""
+    move = None
+    while not move:
+        try:
+            move = int(input(f"{player} where would you like to go? "))
+        except ValueError:
+            print("Please enter a number from 1-9")
+    return move
+
+
 def player_turn_to_board_location(move):
     """Convert the players move to a board location."""
     move -= 1
@@ -26,17 +48,6 @@ def player_turn_to_board_location(move):
     row = board_location[0]
     column = board_location[1]
     return row, column
-
-
-def player_turn(player, board):
-    """Ask player to their turn on the board and return the player who will play next."""
-    move = int(input(f"{player} where would you like to go? "))
-    while not check_valid_move(move, board):
-        move = int(input(f"{player} where would you like to go? "))
-    row, column = player_turn_to_board_location(move)
-    board[row][column] = player
-    display_board(board)
-    return board
 
 
 def check_valid_move(location, board):
@@ -89,7 +100,11 @@ The board and it's playable positions:
 
 
 def play():
-    board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+    board = [
+        [" ", " ", " "], 
+        [" ", " ", " "], 
+        [" ", " ", " "]
+    ]
     current_player = "X"
     winner = False
 
