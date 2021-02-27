@@ -13,24 +13,34 @@ def display_board(board):
         print(row)
 
 
-def switch_player(player):
-    """Switch the player from X to O or vice versa and return the player"""
-    players = {"X": "O", "O": "X"}
-    return players[player]
-
-
 def ask_player_for_location(player):
     """Ask the player where they would like to use their turn"""
     move = None
     while not move:
         try:
             move = int(input(f"{player} where would you like to go? "))
-            if move not in range(1,10):
+            if move not in range(1, 10):
                 move = None
                 raise ValueError
         except ValueError:
             print("Please enter a number from 1-9")
     return move
+
+
+def player_turn_to_board_location(move):
+    """Convert the players move to a board location."""
+    move -= 1
+    row, column = divmod(move, 3)
+    return row, column
+
+
+def check_valid_move(location, board):
+    """Check the players move is valid."""
+    row, column = player_turn_to_board_location(location)
+    if board[row][column] != " ":
+        print("That position is already taken")
+        return False
+    return True
 
 
 def player_turn(player, board):
@@ -44,22 +54,10 @@ def player_turn(player, board):
     return board
 
 
-def player_turn_to_board_location(move):
-    """Convert the players move to a board location."""
-    move -= 1
-    board_location = divmod(move, 3)
-    row = board_location[0]
-    column = board_location[1]
-    return row, column
-
-
-def check_valid_move(location, board):
-    """Check the players move is valid."""
-    row, column = player_turn_to_board_location(location)
-    if board[row][column] != " ":
-        print("That position is already taken")
-        return False
-    return True
+def switch_player(player):
+    """Switch the player from X to O or vice versa and return the player"""
+    players = {"X": "O", "O": "X"}
+    return players[player]
 
 
 def check_for_win(board, player):
@@ -68,18 +66,14 @@ def check_for_win(board, player):
         if all(move == player for move in row):
             return f"{player} is the Winner!"
 
-    for row in zip(*board):
-        if all(move == player for move in row):
+    for column in zip(*board):
+        if all(move == player for move in column):
             return f"{player} is the Winner!"
 
     if all(board[i][i] == player for i in range(3)):
         return f"{player} is the Winner!"
-    elif all(board[i][i] == "O" for i in range(3)):
-        return f"{player} is the Winner!"
 
     if all(board[i][2 - i] == "X" for i in range(3)):
-        return f"{player} is the Winner!"
-    elif all(board[i][2 - i] == "O" for i in range(3)):
         return f"{player} is the Winner!"
 
     if all(move != " " for row in board for move in row):
@@ -102,13 +96,14 @@ The board and it's playable positions:
 
 
 def play():
+    """Play the game"""
     board = [
-        [" ", " ", " "], 
-        [" ", " ", " "], 
+        [" ", " ", " "],
+        [" ", " ", " "],
         [" ", " ", " "]
     ]
     current_player = "X"
-    winner = False
+    winner = None
 
     introduction()
     while not winner:
