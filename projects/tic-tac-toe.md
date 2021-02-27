@@ -1,4 +1,4 @@
-# ❌⭕ Stock Checker
+# ❌⭕ Tic Tac Toe
 
 [Solution](/solutions/tic-tac-toe.md) | [All Ideas](/README.md)
 

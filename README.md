@@ -17,7 +17,7 @@ We're a community of coders who believe the best way to grow is to help others l
 ## Games
 
 - Number guessing game
-- [Tic Tac Toe](/projects/tic-tac-toe.md)
+- [Tic Tac Toe](/projects/tic-tac-toe.md) [[Solution](/solutions/tic-tac-toe.md)]
 
 ## Using APIs
 
