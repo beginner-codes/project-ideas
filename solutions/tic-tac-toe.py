@@ -19,6 +19,20 @@ def switch_player(player):
     return players[player]
 
 
+def ask_player_for_location(player):
+    """Ask the player where they would like to use their turn"""
+    move = None
+    while not move:
+        try:
+            move = int(input(f"{player} where would you like to go? "))
+            if move not in range(1,10):
+                move = None
+                raise ValueError
+        except ValueError:
+            print("Please enter a number from 1-9")
+    return move
+
+
 def player_turn(player, board):
     """Ask player to their turn on the board and return the player who will play next."""
     move = ask_player_for_location(player)
@@ -28,17 +42,6 @@ def player_turn(player, board):
     board[row][column] = player
     display_board(board)
     return board
-
-
-def ask_player_for_location(player):
-    """Ask the player where they would like to use their turn"""
-    move = None
-    while not move:
-        try:
-            move = int(input(f"{player} where would you like to go? "))
-        except ValueError:
-            print("Please enter a number from 1-9")
-    return move
 
 
 def player_turn_to_board_location(move):
@@ -52,10 +55,9 @@ def player_turn_to_board_location(move):
 
 def check_valid_move(location, board):
     """Check the players move is valid."""
-    possible_moves = range(1, 10)
     row, column = player_turn_to_board_location(location)
-    if location not in possible_moves or board[row][column] != " ":
-        print("You cannot go there!")
+    if board[row][column] != " ":
+        print("That position is already taken")
         return False
     return True
 
