@@ -1,4 +1,5 @@
 # Beginner.py Project Ideas
+[![Join Us On Discord!!!](https://discord.com/api/guilds/644299523686006834/embed.png)](https://discord.gg/sfHykntuGy)
 
 Here you'll find various project ideas organized by topics. Where possible, there will be worked out solutions linked separately. You can reference them if you get stuck or if you want to see how others would have done it.
 
@@ -21,12 +22,12 @@ We're a community of coders who believe the best way to grow is to help others l
 ## Games
 
 - Number guessing game
-- Tic Tac Toe
+- [Tic Tac Toe](/projects/tic-tac-toe.md) [[Solution](/solutions/tic-tac-toe.md)]
 
 ## Using APIs
 
 - Command line weather checker
-- Command line stock checker
+- [Command line stock price checker](/projects/stock-checker.md) [[Solution](/solutions/stock-checker.md)]
 
 ## Math
 
