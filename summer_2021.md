@@ -4,10 +4,10 @@
 Here are some project ideas you can use to keep from getting bored over the summer break! Have fun!!!
 
 ## Contents
-- [Blog](#blog)
-- [Chat](#chat)
-- [To Do App](#to-do-app)
-- [Game](#game)
+- [Blog](#-blog)
+- [Chat](#-chat)
+- [To Do App](#-to-do-app)
+- [Game](#-game)
 
 ## 📚 Blog
 Create a simple to use blog platform. It should support image uploads, post editing, and secure authentication.
