@@ -1,4 +1,5 @@
 # Beginner.py Project Ideas - ☀️ Summer 2021 🏝
+[![Join Us On Discord!!!](https://discord.com/api/guilds/644299523686006834/embed.png)](https://discord.gg/sfHykntuGy)
 
 Here are some project ideas you can use to keep from getting bored over the summer break! Have fun!!!
 
