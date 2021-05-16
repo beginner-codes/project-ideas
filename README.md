@@ -14,6 +14,10 @@ We're a community of coders who believe the best way to grow is to help others l
 4. [Automation](#automation)
 5. [Other](#other)
 
+## Special Projects
+
+- [☀️ Summer 2021 🏝](summer_2021.md)
+
 ## Games
 
 - Number guessing game
