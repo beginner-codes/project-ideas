@@ -6,8 +6,8 @@ def pythagorean_theorom_solver(first_num, second_num, side):
             return sqrt(second_num**2 - first_num**2)
         except ValueError:
             if side == 'a':
-                return "a must be shorter than c."
-            return "b must be shorter than c."
+                return "b must be shorter than c."
+            return "a must be shorter than c."
     return sqrt(first_num**2 + second_num**2)
     
         
