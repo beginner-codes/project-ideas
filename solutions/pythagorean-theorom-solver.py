@@ -15,10 +15,10 @@ def start():
     go_on = 'y'
     while go_on == 'y':
         side = input("what side do you want to calculate(a,b,c): ")
-        side_1 = int(input("Enter the first side: ")):
+        side_1 = int(input("Enter the first side: "))
         side_2 = int(input("Enter the second side: "))
         
-        print(pythagorean_theorom_solver(side_b, side_c, side))
+        print(pythagorean_theorom_solver(side_1, side_2, side))
         
         go_on = input('Press "y" to continue: ')
     print("Thanks for playing.")
