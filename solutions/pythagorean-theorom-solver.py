@@ -1,27 +1,26 @@
 from math import sqrt
 
 def pythagorean_theorom_solver(first_num, second_num, side):
-    if side != 'c':
-        try:
-            return sqrt(second_num**2 - first_num**2)
-        except ValueError:
-            if side == 'a':
-                return "b must be shorter than c."
-            return "a must be shorter than c."
-    return sqrt(first_num**2 + second_num**2)
+    if side == 'c':
+        return sqrt(first_num**2 + second_num**2)
+    try:
+        return sqrt(second_num**2 - first_num**2)
+    except ValueError:
+        opposite_side = "b" if side == "a" else "a"
+        return f"{opposite_side} must be shorter than c."
     
-        
 def start():
     go_on = 'y'
+    side_dict = {'a':('b','c'),'b':('a','c'), 'c':('a','b')}
     while go_on == 'y':
         side = input("what side do you want to calculate(a,b,c): ")
-        side_1 = int(input("Enter the first side: "))
-        side_2 = int(input("Enter the second side: "))
-        
-        print(pythagorean_theorom_solver(side_1, side_2, side))
-        
+        side_1,side_2 = side_dict[side]
+        length_1 = int(input(f"Enter the length of {side_1} side: "))
+        length_2 = int(input(f"Enter the length of {side_2} side: "))
+        print(pythagorean_theorom_solver(length_1, length_2, side))
         go_on = input('Press "y" to continue: ')
     print("Thanks for playing.")
+    
 if __name__ == "__main__":
     start()
 
