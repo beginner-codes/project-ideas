@@ -1,5 +1,22 @@
-import math
+import cmath
 import textwrap
+import math
+
+"""
+A simple Quadratic Calculator script returning details about a given polynomial
+"""
+
+def discrimnant(a, b, c):
+    return ((-b)**2 - 4*a*c)
+
+def quadartic_formula(a, b, Discrimnant):
+    # Two instances of the roots, one is natural roots and the other is complex calculated with cmath
+    if Discrimnant >= 0:
+        x1, x2 =  round((-b - math.sqrt(Discrimnant)) / (2*a), 2), round((-b + math.sqrt(Discrimnant)) / (2*a), 2)
+        return x1, x2 if x1 != x2 else x1
+
+    x1, x2 = (-b - cmath.sqrt(Discrimnant)) / (2*a), (-b + cmath.sqrt(Discrimnant)) / (2*a)
+    return x1, x2
 
 def quadratic_calculator(a, b, c):
     """
@@ -7,21 +24,9 @@ def quadratic_calculator(a, b, c):
         correct polynomial expression to work.
     """
 
-    # Checking if a is smaller than 0 if it is teh polynomial is incorrect
-    if a < 0:
-        return f"Incorrect a value {a} is smaller than 1"
-
-    # If the polynomial is fine we calculate the discrimnant of the expression
-    Discrimnant = ((-b)**2 - 4*a*c)
-
-    # Checking if the discrimnant is valid
-    if Discrimnant < 0:
-        return f"The given Parabola has no real roots, doesnt touch the x-axis. Discrimnant is lower than 0 {Discrimnant}"
-
-
-    # Here we are calculating the expression by destructuring the roots into the variables x1 and x2
-    x1, x2 =  round((-b - math.sqrt(Discrimnant)) / (2*a), 2), round((-b + math.sqrt(Discrimnant)) / (2*a), 2)
-
+    Discrimnant = discrimnant(a, b, c)
+    roots = quadartic_formula(a, b, Discrimnant)
+        
     # Formatting the equation into a nice string for the user to see.
     formatted_equation = f"{a}x² {f'+ {b}' if b > 0 else f'- {abs(b)}'}x {f'+ {c}' if c > 0 else f'- {abs(c)}'}"
 
@@ -33,24 +38,28 @@ def quadratic_calculator(a, b, c):
     {formatted_equation}
     {'_'*len(formatted_equation)}
     Discrimnant: {Discrimnant}
-    roots: {f'{(x1, 0)} and {(x2, 0)}' if x1 != x2 else x1}\n""")
+    roots: {f'x1 = {roots[0]} and x2 = {roots[1]}' if roots[0] != roots[1] else roots[0]}\n""")
 
-
-
+def valid_input(a, b, c):
+    return all(map(str.isnumeric, (a, b, c)))
+    
 def main():
     solve = "y"
     while solve == "y":
-        # Asking for user input 
-        a = int(input("Enter your a value ax² + bx + c: "))
-        b = int(input("Enter your b value: "))
-        c = int(input("Enter your c value: "))
+        # Asking for user input and checking if it is all of type int before conversion
+        a = input("Enter your a value ax² + bx + c: ")
+        b = input("Enter your b value: ")
+        c = input("Enter your c value: ")
+
+        if not valid_input(a, b, c):
+            print("Sorry you entered a value that isnt a number retry!\n")
+            continue
 
         # Printing the returned value of our function 
-        print(quadratic_calculator(a, b, c))
+        print(quadratic_calculator(int(a), int(b), int(c)))
         
         # Prompting the user again if they want to continue solving questions
         solve = input("Do you want to solve another polynomial? [Y]es or [Any other character to quit]: ").lower()
-        print("\n")
 
     print("Ended!")
 
