@@ -7,7 +7,7 @@ A simple Quadratic Calculator script returning details about a given polynomial
 """
 
 def discrimnant(a, b, c):
-    return ((-b)**2 - 4*a*c)
+    return b**2 - 4*a*c
 
 def quadartic_formula(a, b, Discrimnant):
     # Two instances of the roots, one is natural roots and the other is complex calculated with cmath
