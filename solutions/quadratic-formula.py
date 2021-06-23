@@ -3,65 +3,72 @@ import textwrap
 import math
 
 """
-A simple Quadratic Calculator script returning details about a given polynomial
+A simple Quadratic Calculator script returning details about a given quadratic equation
 """
 
-def discrimnant(a, b, c):
-    return b**2 - 4*a*c
+def discriminant_calculator(a, b, c):
+    return b**2 - 4 * a *c
 
-def quadartic_formula(a, b, Discrimnant):
+
+def round_complex(complex_num):
+    return round(complex_num.real, 4) + round(complex_num.imag, 4) * 1j
+
+
+def quadratic_formula(a, b, discriminant):
     # Two instances of the roots, one is natural roots and the other is complex calculated with cmath
-    if Discrimnant >= 0:
-        x1, x2 =  round((-b - math.sqrt(Discrimnant)) / (2*a), 2), round((-b + math.sqrt(Discrimnant)) / (2*a), 2)
+    if discriminant >= 0:
+        x1, x2 =  round((-b - math.sqrt(discriminant)) / (2*a), 2), round((-b + math.sqrt(discriminant)) / (2*a), 2)
         return x1, x2 if x1 != x2 else x1
 
-    x1, x2 = (-b - cmath.sqrt(Discrimnant)) / (2*a), (-b + cmath.sqrt(Discrimnant)) / (2*a)
+    x1, x2 = round_complex((-b - cmath.sqrt(discriminant)) / (2*a)), round_complex((-b + cmath.sqrt(discriminant)) / (2*a))
+    
     return x1, x2
+
 
 def quadratic_calculator(a, b, c):
     """
-        The actual calculator function that will do the necessary work for a
-        correct polynomial expression to work.
+    The actual calculator function that will do the necessary work for a
+    correct quadratic expression to work.
     """
 
-    Discrimnant = discrimnant(a, b, c)
-    roots = quadartic_formula(a, b, Discrimnant)
-        
-    # Formatting the equation into a nice string for the user to see.
-    formatted_equation = f"{a}x² {f'+ {b}' if b > 0 else f'- {abs(b)}'}x {f'+ {c}' if c > 0 else f'- {abs(c)}'}"
+    discriminant = discriminant_calculator(a, b, c)
+    roots = quadratic_formula(a, b, discriminant)
+    formatted_equation = format_equation(a, b, c)
 
-    """
-    Returning the final answer in a nice format with the Discrimnant and roots. 
-    The conditional ternarys inside will check if it has one root or two.
-    """
-    return textwrap.dedent(f"""
-    {formatted_equation}
-    {'_'*len(formatted_equation)}
-    Discrimnant: {Discrimnant}
-    roots: {f'x1 = {roots[0]} and x2 = {roots[1]}' if roots[0] != roots[1] else roots[0]}\n""")
+    return textwrap.dedent(
+        f"""
+        {formatted_equation}
+        {'_' * len(formatted_equation)}
+        Discriminant: {discriminant}
+        roots: {f'x₁ = {roots[0]} and x₂ = {roots[1]}' if roots[0] != roots[1] else roots[0]}\n
+        """
+    )
 
-def valid_input(a, b, c):
-    return all(map(str.isnumeric, (a, b, c)))
-    
+def format_equation(a, b, c):
+    return f"{a}x² {f'+ {b}' if b > 0 else f'- {abs(b)}'}x {f'+ {c}' if c > 0 else f'- {abs(c)}'}"
+
+
 def main():
     solve = "y"
     while solve == "y":
-        # Asking for user input and checking if it is all of type int before conversion
-        a = input("Enter your a value ax² + bx + c: ")
-        b = input("Enter your b value: ")
-        c = input("Enter your c value: ")
+        print("Quadratic Calculator Enter your equation in standard form ax² + bx + c")
+        try:
+            a = int(input("Enter your a value: "))
+            b = int(input("Enter your b value: "))
+            c = int(input("Enter your c value: "))
 
-        if not valid_input(a, b, c):
+        except ValueError:
             print("Sorry you entered a value that isnt a number retry!\n")
             continue
 
-        # Printing the returned value of our function 
+        if a == 0:
+            print("Sorry but a cannot be 0!\n")
+            continue
+
         print(quadratic_calculator(int(a), int(b), int(c)))
-        
-        # Prompting the user again if they want to continue solving questions
         solve = input("Do you want to solve another polynomial? [Y]es or [Any other character to quit]: ").lower()
 
-    print("Ended!")
+    print("Ended!\n")
 
 
 if __name__ == '__main__':
