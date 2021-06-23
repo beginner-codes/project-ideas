@@ -44,6 +44,7 @@ We're a community of coders who believe the best way to grow is to help others l
 
 - Caesar cypher
 - Birthday calendar
+- [Basic linear regression model with scikit-learn](/projects/linear-regression.md)
 
 ## Contributing Project Ideas & Solutions
 
