@@ -1,6 +1,6 @@
 # 📏 Basic Linear Regression Model with Scikit-Learn
 
-Solution | [All Ideas](/README.md)
+[Solution](https://nbviewer.jupyter.org/github/beginnerpy-com/project-ideas/blob/main/solutions/linear-regression.ipynb) | [Solution Download](/solutions/linear-regression.ipynb) | [All Ideas](/README.md)
 
 Linear regression models are a very simple yet powerful tool to make predictions or explain linearly correlated data. For this project, we will be using a sample dataset generated for the purpose of learning how to create a linear regression model.
 
@@ -13,6 +13,13 @@ For this project you will need the dataset which can be downloaded from [here](h
 - test.csv
 
 which will be used to train and test your linear regression model.
+
+### Recommended Tasks
+- Import the two csv files into a python notebook
+- Check for missing values and outliers
+- Plot the data and check for linearity
+- Build a linear regression model
+- Evaluate it with mean squared error and R^2 coefficient
 
 ### Recommended Libraries
 For this project, we recommend (and will be using in the solution) the following libraries:
