@@ -16,6 +16,7 @@ which will be used to train and test your linear regression model.
 
 ### Recommended Libraries
 For this project, we recommend (and will be using in the solution) the following libraries:
+- jupyterlab/ jupyter-notebook (Using a notebook is normally easier for developing machine learning models)
 - pandas
 - numpy
 - matplotlib and/or seaborn
