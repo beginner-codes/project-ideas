@@ -33,7 +33,7 @@ We're a community of coders who believe the best way to grow is to help others l
 
 - [Conversion calculator (temperature, weight, distance)](/projects/conversion-calculator.md) [[Solution](/solutions/conversion-calculator.md)]
 - Currency converter
-- Pythagorean theorem solver
+- Pythagorean theorem solver[[Solution](/solutions/pythagorean-theorom-solver.py)]
 - Quadratic equation solver
 
 ## Automation
