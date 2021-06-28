@@ -39,3 +39,28 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 ```
 `pandas` is used for data manipulation and cleaning, `numpy` is used for arrays, matrices, and numerical calculations, and `seaborn` and `matplotlib` is for plotting.
+
+Next we need to read the csv files into our notebook so that we can use the data we have downloaded. To do this, we read the `train.csv` and `test.csv` files into a dataframe using the `pandas` library.
+
+#### Training data
+To import the training data we use `pd.read_csv(file_path)` for example:
+```py
+train_df = pd.read_csv("datasets/train.csv")
+```
+Then we can use
+```py
+train_df.head()
+```
+to preview to first 5 rows to make sure that the data is loaded in properly.
+
+![train_df](https://user-images.githubusercontent.com/41812358/123644140-35315500-d879-11eb-83be-5a9df3c319a5.png)
+
+
+#### Testing data
+For the testing data, we do the same thing but use the testing data's file path.
+```py
+test_df = pd.read_csv("datasets/test.csv")
+
+test_df.head()
+```
+![test_df](https://user-images.githubusercontent.com/41812358/123644330-63169980-d879-11eb-8d1d-1cc0f1a681b8.png)
