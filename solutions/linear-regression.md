@@ -64,3 +64,9 @@ test_df = pd.read_csv("datasets/test.csv")
 test_df.head()
 ```
 ![test_df](https://user-images.githubusercontent.com/41812358/123644330-63169980-d879-11eb-8d1d-1cc0f1a681b8.png)
+
+## Looking Around Our Dataset
+Now before using any data to train models, we need to make sure that the data is usable and suitable for a machine model. This is done during the data exploration and cleaning phases. As the dataset we are using is quite simple and is almost ready to be used, I am combining both the data exploration part and the data cleaning parts together. This also means that the data will probably not need much cleaning. 
+
+**Remember:** Other datasets (especially real life ones) will need a lot more throrough exploration and cleaning than the dataset being used in this project. Every dataset is different and so differing techniques may be required from the ones shown in this project solution.
+
