@@ -70,3 +70,63 @@ Now before using any data to train models, we need to make sure that the data is
 
 **Remember:** Other datasets (especially real life ones) will need a lot more throrough exploration and cleaning than the dataset being used in this project. Every dataset is different and so differing techniques may be required from the ones shown in this project solution.
 
+Once again we look at each ofthe individual datasets seperately when exploring and cleaning the datasets.
+
+#### Training data
+
+##### Shape and datatypes of our data
+In Pandas, dataframes have a lot of useful methods and attributes that can be extremely helpful. Now something that I normally like to do when working with data is to see exactly how much data we have. So this means I would like to know how many datapoints we have (rows of the dataframe), and how many columns we have. To do this we simply use the `DataFrame.shape` attribute which will return the number of rows and columns as a tuple (rows, columns).
+
+```py
+train_df.shape
+```
+This returns `(700, 2)` signifying that our dataset has 700 rows and 2 columns. 
+
+After this, I wanted to check if our data was suitable for a linear regression model. For data to be suitable for this purpose, it needs to satisfy some requirements such as the values need to be numeric, have a linear correlation, there are no missing values, etc.
+
+
+To make sure that the values are numeric, we use the `DataFrame.dtypes` attribute like this:
+```py
+train_df.dtypes
+
+# x    float64
+# y    float64
+# dtype: object
+```
+
+And we see that both `x` and `y` are float64 and so the values are numeric variables.
+
+
+##### Missing values
+Next I wanted to see if there were any missing values and if so, remove them. There are other ways to deal with missing values but for simplicity I decided to just remove it.
+
+One easy way to check how many missing values are in our data, we use two pandas methods: `DataFrame.isnull()` and `DataFrame.sum()`. What the `isnull()` method does is, for every value in the dataframe, if it is null or invalid or missing, then it will represent that as `False` otherwise it will be `True`. This creates a new dataframe where every value is replaced with a boolean value. From there, we can chain the `sum()` method on the boolean dataframe which will sum up all the values in each row. As `False` can be represented as 0 and `True` can be represented as 1, if we see that a column has a summed value of more than 0, then there are missing values.
+
+```py
+train_df.isnull().sum()
+
+# x    0
+# y    1
+# dtype: int64
+```
+
+We see that the `y` column has one missing value. If we wanted to see what row this is, we can run `train_df[train_df["y"].isnull()]`. I won't explain how this code works in this walkthrough but it's mostly just Pandas indexing which is pretty straightfoward. If you want to get an explanation behind that code, ask me in the beginner.py server and ping me (@wang$5464).
+
+To remove all missing values we run
+```py
+train_df = train_df.dropna()
+```
+This drops the rows containing null values and then we reassign `train_df` to the new dropped null values dataframe.
+
+Lastly we check if there are any more null values by running
+```py
+train_df.isnull().any()
+
+# x    False
+# y    False
+# dtype: bool
+```
+This is similar to what we did before but we are now using the `DataFrame.any()` method which returns `True` if at least one value in the column is `True` else it will return `False`.
+
+##### Checking linearity
+
