@@ -129,4 +129,4 @@ train_df.isnull().any()
 This is similar to what we did before but we are now using the `DataFrame.any()` method which returns `True` if at least one value in the column is `True` else it will return `False`.
 
 ##### Checking linearity
-
+The last thing I did was to check if the two variables `x` and `y` are linearly correlated and there are not too many outliers. This can be done with a simple plot of the data using either matplotlib, seaborn, or any other data visualisation library. I will be using seaborn as I like how easy it is to use and how the plots are better looking than matplotlib (in my opinion).
