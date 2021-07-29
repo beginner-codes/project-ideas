@@ -130,3 +130,13 @@ This is similar to what we did before but we are now using the `DataFrame.any()`
 
 ##### Checking linearity
 The last thing I did was to check if the two variables `x` and `y` are linearly correlated and there are not too many outliers. This can be done with a simple plot of the data using either matplotlib, seaborn, or any other data visualisation library. I will be using seaborn as I like how easy it is to use and how the plots are better looking than matplotlib (in my opinion).
+
+```py
+sns.scatterplot(x="x", y="y", data=train_df);
+```
+
+`sns.scatterplot()` creates a scatterplot where the x axis is equal to `train_df[x]` and the y axis is equal to `train_df[y]`.
+
+![image](https://user-images.githubusercontent.com/41812358/127419070-38e658ae-aa9c-4822-b8fe-3c8ce84c2c8d.png)
+
+So we see that the data is linearly correalated and also there are not any obvious outliers. This means that a linear regression model is suitable for the data.
