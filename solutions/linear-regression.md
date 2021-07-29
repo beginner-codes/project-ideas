@@ -175,4 +175,4 @@ model.intercept_      # -0.10726546430097272
 This means that our linear regression's fomula is `y = 1.00065638x - 0.1072655`.
 
 ## Conclusion
-So this project walkthrough went through the basics of building a linear regression model with simple data cleaning, visualisation, and model building. Of course machine learning is never actually this straightfoward and there are normally more steps such as model evaluation, but this was just a simple taste of the field of data science/machine learning :).
+So this project walkthrough went through the basics of building a linear regression model with simple data cleaning, visualisation, and model building. Of course machine learning is never actually this straightfoward and there are normally more steps such as model evaluation and using the model to predict the outputs of new data, but this was just a simple taste of the field of data science/machine learning :).
