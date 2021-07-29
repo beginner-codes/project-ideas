@@ -140,3 +140,39 @@ sns.scatterplot(x="x", y="y", data=train_df);
 ![image](https://user-images.githubusercontent.com/41812358/127419070-38e658ae-aa9c-4822-b8fe-3c8ce84c2c8d.png)
 
 So we see that the data is linearly correalated and also there are not any obvious outliers. This means that a linear regression model is suitable for the data.
+
+#### Testing Data
+For the testing data, I did something similar to what I did with the training data.
+
+#### Model Building
+Now it's time to finally build something. So the linear regression model I will be using is part of the sci-kit learn library that you previously installed. The way we import it is by using the following code: 
+```py
+from sklearn.linear_model import LinearRegression
+```
+
+Next, I created variables for the training X and y data, and the testing X and y data.
+
+```py
+X_train, y_train, X_test, y_test = train_df[["x"]], train_df["y"], test_df[["x"]], test_df["y"]
+```
+This makes it a lot easier to know what part of the data we are using.
+
+
+We then create a linear regression model object by running `model = LinearRegression()`. I just called it model however, like any variable in this tutorial, you can call it whatever you like. So now that we have a linear regression model object in the variable `model`, we can now train it with the `fit()` method.
+
+```py
+model.fit(X_train, y_train)
+```
+
+The `fit()` method takes two arguments: training X and training y which is what we put in the brackets. After runnning that line of code, our linear regression model has now trained itself on the training data.
+
+Lastly, to get the parameters of the model (slope and y-intercept), we access the `coef_` and `intercept_` attributes by running:
+```py
+model.coef_     # array([1.00065638])
+
+model.intercept_      # -0.10726546430097272
+```
+This means that our linear regression's fomula is `y = 1.00065638x - 0.1072655`.
+
+## Conclusion
+So this project walkthrough went through the basics of building a linear regression model with simple data cleaning, visualisation, and model building. Of course machine learning is never actually this straightfoward and there are normally more steps such as model evaluation, but this was just a simple taste of the field of data science/machine learning :).
