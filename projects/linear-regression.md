@@ -1,6 +1,6 @@
 # 📏 Basic Linear Regression Model with Scikit-Learn
 
-Solution | [All Ideas](/README.md)
+[Solution](/solutions/linear-regression.ipynb) | [All Ideas](/README.md)
 
 Linear regression models are a very simple yet powerful tool to make predictions or explain linearly correlated data. For this project, we will be using a sample dataset generated for the purpose of learning how to create a linear regression model.
 
@@ -44,4 +44,4 @@ Before installing any of these libraries, we recommend you to use a virtual pyth
 
 ## Solution
 
-The solution is currently not available yet but will be uploaded as soon as possible. 
+You can see our solution and how we arrived at it [here](/solutions/linear-regression.md).
