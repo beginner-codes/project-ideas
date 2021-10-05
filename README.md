@@ -1,4 +1,4 @@
-# Beginner.py Project Ideas
+# Beginner.Codes Project Ideas
 [![Join Us On Discord!!!](https://discord.com/api/guilds/644299523686006834/embed.png)](https://discord.gg/sfHykntuGy)
 
 Here you'll find various project ideas organized by topics. Where possible, there will be worked out solutions linked separately. You can reference them if you get stuck or if you want to see how others would have done it.
